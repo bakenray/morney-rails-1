@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   # 设置不能为空
   validates_presence_of :email
-  validates_presence_of :password_confirmation, on: [create]
+  validates_presence_of :password_confirmation, on: [:create]
 
   #  emails 判断必须有@
   validates_format_of  :email, with: /.+@.+/
