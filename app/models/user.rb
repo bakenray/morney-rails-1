@@ -6,9 +6,9 @@ class User < ApplicationRecord
   validates_presence_of :password_confirmation, on: [:create]
 
   #  emails 判断必须有@
-  validates_format_of  :email, with: /.+@.+/
+  validates_format_of  :email, with: /.+@.+/, if: :email
   # 长度限制
-  validates :password,length: { minimum:6 }, on: [:create]
+  validates :password,length: { minimum:6 }, on: [:create], if: :password
   # 或者可以写成
   # validates_length_of :password, minimum: 6
 end
