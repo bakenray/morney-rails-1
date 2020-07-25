@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   get '/hi', to: 'first#hi'
 
   resource :users
+  resource :sessions, only: [:create, :destory]
 end
 
