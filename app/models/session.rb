@@ -11,14 +11,14 @@ class Session
     validate :email_password_match, if: Proc.new { |s| s.email.present? and s.password.present?}
     
     def check_email
-        user ||=  User.find_by_email email  #也可以写成 User.find_by email: email
+        @user ||=  User.find_by_email email  #也可以写成 User.find_by email: email
         if user.nil? # 判断user为空
             errors.add :email, :not_found
         end
     end
 
     def email_password_match
-        user ||=  User.find_by_email email  #||=缓存复制，先看缓存有没有
+        @user ||=  User.find_by_email email  #||=缓存复制，先看缓存有没有
         if user and not user.authenticate(password)
             errors.add :password, :mismatch
         end
