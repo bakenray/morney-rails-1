@@ -6,7 +6,9 @@ class SessionsController < ApplicationController
         session[:current_user_id] = s.user.id
     end
     def destory
-        
+        session[:current_user_id] = nil
+        # cookies.delete :_morney_session_id
+        head 200
     end
     def create_params
         params.permit(:email, :password)
